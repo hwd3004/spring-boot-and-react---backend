@@ -13,7 +13,7 @@ public class IndexController {
 
     @GetMapping({"/", ""})
     public ResponseEntity index() {
-        return new ResponseEntity("Hello", HttpStatusCode.valueOf(HttpStatus.OK.value()));
+        return new ResponseEntity("Here is Spring Boot", HttpStatusCode.valueOf(HttpStatus.OK.value()));
     }
 
 }
