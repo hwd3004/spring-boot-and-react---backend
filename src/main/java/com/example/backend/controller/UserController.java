@@ -1,18 +1,30 @@
 package com.example.backend.controller;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.backend.model.User;
+import com.example.backend.payload.response.MutationResponse;
+import com.example.backend.service.UserService;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/users")
 @RestController
 public class UserController {
+  @Autowired
+  private UserService userService;
 
-    @GetMapping
-    public ResponseEntity index() {
-        return new ResponseEntity("Users", HttpStatusCode.valueOf(HttpStatus.OK.value()));
-    }
+  @GetMapping
+  public List<User> getFindAllUsers() {
+    return userService.findAllUsers();
+  }
+
+  @PostMapping("/signup")
+  public MutationResponse<User> createUser(@RequestBody User user) {
+    return userService.createUser(user);
+  }
+
+  @PostMapping("/login")
+  public MutationResponse<User> login(@RequestBody User user) {
+    return userService.login(user);
+  }
 }

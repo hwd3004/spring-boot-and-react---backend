@@ -7,13 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping({"", "/"})
+@RequestMapping({ "", "/" })
 @RestController
 public class IndexController {
 
-    @GetMapping
-    public ResponseEntity index() {
-        return new ResponseEntity("Here is Spring Boot", HttpStatusCode.valueOf(HttpStatus.OK.value()));
-    }
-
+  @GetMapping
+  public ResponseEntity index() {
+    return new ResponseEntity(
+      "Here is Spring Boot",
+      HttpStatusCode.valueOf(HttpStatus.OK.value())
+    );
+  }
 }
