@@ -37,6 +37,10 @@ public class User {
   @Transient
   String confirmEmail;
 
+  @Column(name = "roles", nullable = false)
+  @Enumerated(EnumType.STRING)
+  Role role;
+
   @OneToMany(
     mappedBy = "user",
     cascade = CascadeType.ALL,
